@@ -70,7 +70,7 @@ DrinkPos.prototype.getCheckedValue = function (inputName) {
 
 DrinkPos.prototype.addDrink = function (drink) {
   let orderCardHTML = `
-    <div class="card mb-3">
+    < div class="card mb-3" >
       <div class="card-body pt-3 pr-3">
         <div class="text-right">
           <span data-drink-pos="delete-drink">×</span>
