@@ -19,13 +19,18 @@ addDrinkBtn.addEventListener('click', function addTheDrinkToList(e) {
 
   // 3. 建立飲料實例，並取得飲料價格
   const drink = new Drink(drinkName, sugar, ice)
-  console.log(`${drink.name}, ${drink.ice}, ${drink.sugar}`)
-  console.log(drink.price())
 
   // 4. 將飲料實例產生成左側訂單區的畫面
   drinkPos.addDrink(drink)
 })
 
+orderList.addEventListener('click', function deleteOrderList(event) {
+  const isDeleteBtn = event.target.matches('[data-drink-pos="delete-drink"]')
+  if (!isDeleteBtn) {
+    return
+  }
+  drinkPos.removeList(event.target.parentElement.parentElement.parentElement)
+})
 
 function Drink(name, sugar, ice) {
   this.name = name
@@ -82,4 +87,8 @@ DrinkPos.prototype.addDrink = function (drink) {
     </div>
   `
   orderList.insertAdjacentHTML('afterbegin', orderCardHTML)
+}
+
+DrinkPos.prototype.removeList = function (target) {
+  target.remove()
 }
